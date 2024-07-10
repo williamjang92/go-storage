@@ -13,10 +13,13 @@ import (
 func OpenExists(t *testing.T, fs storage.FS, path string, content string) {
 	t.Helper()
 	ctx := context.Background()
+
 	f, err := fs.Open(ctx, path, nil)
 	assert.NoError(t, err)
+
 	b, err := io.ReadAll(f)
 	assert.NoError(t, err)
+
 	got := string(b)
 	assert.Equal(t, content, got)
 
