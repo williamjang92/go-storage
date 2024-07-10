@@ -20,9 +20,11 @@ func OpenExists(t *testing.T, fs storage.FS, path string, content string) {
 	b, err := io.ReadAll(f)
 	assert.NoError(t, err)
 
+
 	got := string(b)
 	assert.Equal(t, content, got)
 
+	
 	attrs, err := fs.Attributes(ctx, path, nil)
 	assert.NoError(t, err)
 	assert.Equal(t, f.Attributes.Metadata, attrs.Metadata)
